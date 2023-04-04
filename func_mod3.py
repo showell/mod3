@@ -73,12 +73,6 @@ fix0 = Function(domain, permutor([0, 2, 1]))
 fix1 = Function(domain, permutor([2, 1, 0]))
 fix2 = Function(domain, permutor([1, 0, 2]))
 
-assert fix0 * fix0 == rotate0
-assert fix0 * fix1 == rotate2
-assert fix0 * fix2 == rotate1
-
-assert fix1 * fix2 == rotate2
-assert fix2 * fix1 == rotate1
 
 group.verify_group_properties(
     members=[rotate0, rotate1, rotate2, fix0, fix1, fix2],
@@ -99,3 +93,23 @@ group.verify_group_properties(
     members=[rotate0, fix2],
     identity=rotate0,
 )
+
+r0 = rotate0
+r1 = rotate1
+r2 = rotate2
+f0 = fix0
+f1 = fix1
+f2 = fix2
+
+multiplication_table = [
+    [r0, r1, r2, f0, f1, f2],
+    [r1, r2, r0, f1, f2, f0],
+    [r2, r0, r1, f2, f0, f1],
+    [f0, f2, f1, r0, r2, r1],
+    [f1, f0, f2, r1, r0, r2],
+    [f2, f1, f0, r2, r1, r0],
+]
+
+for i, x in enumerate([r0, r1, r2, f0, f1, f2]):
+    for j, y in enumerate([r0, r1, r2, f0, f1, f2]):
+        assert x * y == multiplication_table[i][j]
