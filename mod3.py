@@ -26,7 +26,17 @@ assert zero + one == one
 assert zero + two == two
 assert one + one == two
 assert one + two == zero  # 1 + 2 - 3
-assert two + two == one  # 2 _ 2 - 3
+assert two + two == one  # 2 + 2 - 3
+
+multiplication_table = [
+    [zero, one, two],
+    [one, two, zero],
+    [two, zero, one],
+]
+
+for i in [0, 1, 2]:
+    for j in [0, 1, 2]:
+        assert Mod3(i) * Mod3(j) == multiplication_table[i][j]
 
 import group
 
