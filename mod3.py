@@ -6,9 +6,6 @@ class Mod3:
     def __eq__(self, other):
         return self.n == other.n
 
-    def __hash__(self):
-        return self.n
-
     def __add__(self, other):
         return Mod3((self.n + other.n) % 3)
 
